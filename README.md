@@ -162,7 +162,7 @@ Do you want to contribute? Awesome! Here's how:
 
 - Created by **Matin** *(Power0matin)*  
   - GitHub: [@power0matin](https://github.com/power0matin)
-  - Email: matin@example.com *(replace with your email)*
+  - Email: matinshahabadi3@gmail.com
 
 ---
 

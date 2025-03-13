@@ -9,7 +9,7 @@ def run_speed_test():
         
         # بررسی اطلاعات سرور
         server_info = st.results.server
-        print("Server Info:", server_info)  # چاپ اطلاعات سرور برای اشکال زدایی
+        # print("Server Info:", server_info)  # چاپ اطلاعات سرور برای اشکال زدایی
         
         # دریافت سرعت دانلود و آپلود
         download_speed = st.download() / 1e+6  # تبدیل به Mbps
@@ -20,9 +20,9 @@ def run_speed_test():
         result_id = st.results.server.get('id', 'No data available')
         
         # چاپ نتایج برای اشکال زدایی
-        print(f"Download Speed: {download_speed} Mbps")
-        print(f"Upload Speed: {upload_speed} Mbps")
-        print(f"Ping: {ping} ms")
+        # print(f"Download Speed: {download_speed} Mbps")
+        # print(f"Upload Speed: {upload_speed} Mbps")
+        # print(f"Ping: {ping} ms")
         
         return {
             "result_id": result_id,
@@ -38,3 +38,26 @@ def run_speed_test():
     except Exception as e:
         print(f"Error occurred: {str(e)}")  # چاپ خطا برای اشکال زدایی
         return {"error": str(e)}
+
+def print_test_results():
+    result = run_speed_test()
+    
+    if "error" in result:
+        print(f"Error: {result['error']}")
+    else:
+        print("\nInternet Speed Test Results:")
+        print("----------------------------")
+        print(f"Result ID: {result['result_id']}")
+        print(f"Download Speed: {result['download']:.2f} Mbps")
+        print(f"Upload Speed: {result['upload']:.2f} Mbps")
+        print(f"Ping: {result['ping']:.2f} ms")
+        print("\nServer Info:")
+        print("-------------")
+        print(f"Server: {result['server']['name']}")
+        print(f"Location: {result['server']['location']}")
+        print(f"Server IP: {result['server']['ip']}")
+        print("----------------------------")
+        print("Test completed successfully!")
+
+if __name__ == "__main__":
+    print_test_results()

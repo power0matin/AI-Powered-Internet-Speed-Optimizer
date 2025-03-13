@@ -2,8 +2,26 @@ from app.speed_test import run_speed_test
 from app.bandwidth_monitor import monitor_bandwidth_usage
 from app.database import init_db, insert_speed_test, insert_bandwidth_usage
 from app.utils import setup_logging
+import subprocess
+import sys
 
 setup_logging()
+
+def install_requirements():
+    """
+    Check and install required packages from requirements.txt automatically.
+    """
+    try:
+        print("Checking and installing required packages...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "pip"])
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        print("All dependencies are installed successfully!")
+    except Exception as e:
+        print(f"An error occurred while installing dependencies: {e}")
+        sys.exit(1)
+
+# Install requirements before running the actual application
+install_requirements()
 
 def main():
     print("Welcome to AI-Powered Internet Speed Optimizer!")

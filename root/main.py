@@ -1,5 +1,4 @@
-from app.speed_test import run_speed_test
-from app.bandwidth_monitor import monitor_bandwidth_usage
+from app import run_speed_test, monitor_bandwidth_usage
 from app.database import init_db, insert_speed_test, insert_bandwidth_usage
 from app.utils import setup_logging
 import subprocess

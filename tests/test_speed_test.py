@@ -1,5 +1,5 @@
 import unittest
-from app.speed_test import run_speed_test
+from app import run_speed_test
 
 class TestSpeedTest(unittest.TestCase):
     def test_run_speed_test(self):

@@ -45,9 +45,18 @@ def main():
                 print(f"Ping: {result['ping']:.2f} ms")
                 print("\nServer Info:")
                 print("-------------")
-                print(f"Server: {result['server']['name']}")
-                print(f"Location: {result['server']['location']}")
-                print(f"Server IP: {result['server']['ip']}")
+                server = result['server']
+                # If server is a list, use server[0]['name'], otherwise use server['name']
+                if isinstance(server, list) and len(server) > 0 and isinstance(server[0], dict):
+                    print(f"Server: {server[0].get('name', 'N/A')}")
+                    print(f"Location: {server[0].get('location', 'N/A')}")
+                    print(f"Server IP: {server[0].get('ip', 'N/A')}")
+                elif isinstance(server, dict):
+                    print(f"Server: {server.get('name', 'N/A')}")
+                    print(f"Location: {server.get('location', 'N/A')}")
+                    print(f"Server IP: {server.get('ip', 'N/A')}")
+                else:
+                    print("Server information is not available.")
                 print("----------------------------")
                 print("Test completed successfully!")
 
